@@ -35,6 +35,7 @@ function getEmployee() {
         .then((answer) => {
             if (answer.employeeType === 'Manager') {
                 let employeeType = answer.employeeType
+
                 inputEmployee(employeeType)
 
             } else if (answer.employeeType === 'Engineer') {
@@ -88,6 +89,8 @@ function inputEmployee(employee) {
                 console.log(manager)
                 team.push(manager)
                 getEmployee()
+            } else if (employee === 'Engineer') {
+                const engineer = new engineer
             }
 
 

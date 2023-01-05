@@ -10,9 +10,14 @@ class Manager extends Employee {
         super(name, id, email);
         this.oNumber = officeNumber;
     }
-}
 
-// fake use case
+
+    // fake use case
+}
+// const manager1 = 'manager'
+// getEmployee(manager1)
+
+module.exports = Manager
 // const manager1 = new Manager('bobara', '22xww', 'bobara@here.com', '222')
 // const manager2 = new Manager('davida', '11xww', 'davida@here.com', '221')
 

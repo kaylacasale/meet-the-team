@@ -6,10 +6,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const Employee = require('./employee')
+const Employee = require('./employee');
+const Manager = require('./manager');
 // const employee = new Employee();
 
-
+const team = []
 const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
     `<!DOCTYPE html>
     <html lang="en">
@@ -21,62 +22,179 @@ const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
     </head>
     <body>
     <div></div>`
+function getEmployee() {
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                name: 'employeeType',
+                message: 'If you would like to add an Engineer or Intern, please select the option below. If not, see the employee(s) you have added by selecting Meet the Team!',
+                choices: ['Engineer', 'Intern', 'Meet the Team!'],
+            }
+        ])
+        .then((answer) => {
+            if (answer.employeeType === 'Manager') {
+                let employeeType = answer.employeeType
+                inputEmployee(employeeType)
 
-inquirer
-    .prompt([
-        {
+            } else if (answer.employeeType === 'Engineer') {
+                let employeeType = answer.employeeType
+                inputEmployee(employeeType)
+                // inputEngineer(employeeType);
+            } else if (answer.employeeType === 'Intern') {
+                let employeeType = answer.employeeType
+                inputEmployee(employeeType)
 
-            type: 'input',
-            message: 'What is the manager name?',
-            name: 'name',
-        },
-        {
-            type: 'input',
-            message: 'What is the manager id?',
-            name: 'id',
-        },
-        {
-            type: 'input',
-            message: 'What is the manager email?',
-            name: 'email',
-        },
-        {
-            type: 'input',
-            message: 'What is the manager office number?',
-            name: 'officeNumber',
-        },
-    ])
+                //inputIntern();
+            } else {
+                seeEmployees();
+            }
+        })
+}
 
-    .then((input) => {
-        console.log(input)
-        //* destructed object input values passed into object var name 'input'
-        const { name, id, email, officeNumber } = input
-        const employee = new Employee(name, id, email);
-
-
-        // ask if you're done 
-        // if not
-        // -- prompt the user again
-        // if so
-        // -- take all of the object you've created and use them to gen your html
+function inputEmployee(employee) {
 
 
+    inquirer
 
-        console.log(employee)
-        //console.log(Employee.getName())
+        .prompt([
+            {
 
-        let htmlPageContent = generateHTML(input)
-        console.log(htmlPageContent)
-        htmlPageContent += `<h> ${input.name}`
+                type: 'input',
+                message: 'What is the ' + employee + ' name?',
+                name: 'name',
+            },
+            {
+                type: 'input',
+                message: 'What is the ' + employee + ' id?',
+                name: 'id',
+            },
+            {
+                type: 'input',
+                message: 'What is the ' + employee + ' email?',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'What is the ' + employee + ' office number?',
+                name: 'officeNumber',
+            },
+        ])
+
+        .then((input) => {
+
+            if (employee === 'Manager') {
+                const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
+                console.log(manager)
+                team.push(manager)
+                getEmployee()
+            }
 
 
 
-        fs.writeFile('index.html', htmlPageContent, (err) =>
-            err ? console.log(err) : console.log('Successfully created index.html!')
-        )
+        })
+
+}
+
+function seeEmployees() {
+    // let htmlPageContent = generateHTML(input)
+    // console.log(htmlPageContent)
+    // htmlPageContent += team
+
+
+
+    fs.writeFile('index.html', team, (err) =>
+        err ? console.log(err) : console.log('Successfully created index.html!')
+    )
+
+}
+
+
+function init() {
+    inputEmployee('Manager')
+    //getEmployee('Manager')
+}
+
+init()
+//         .then((input) => {
+//     const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
+//     console.log(input)
+//     //* destructed object input values passed into object var name 'input'
+//     const { name, id, email, officeNumber } = input
+//     const employee = new Employee(name, id, email);
+
+//     seeNext(input)
+//     // const manager = new Manager(name, id, email, officeNumber)
+//     // console.log(manager)
 
 
 
 
+//     // ask if you're done 
+//     // if not
+//     // -- prompt the user again
+//     // if so
+//     // -- take all of the object you've created and use them to gen your html
 
-    })
+
+
+//     console.log(employee)
+//     //console.log(Employee.getName())
+
+//     let htmlPageContent = generateHTML(input)
+//     console.log(htmlPageContent)
+//     htmlPageContent += `<h> ${input.name} </h>`
+
+
+
+//     fs.writeFile('index.html', htmlPageContent, (err) =>
+//         err ? console.log(err) : console.log('Successfully created index.html!')
+//     )
+
+//     // console.log(Employee.getName())
+
+
+
+
+// })
+
+
+
+    // .then((input) => {
+    //     const { name, id, email, officeNumber } = input
+
+    //     const manager = new Manager(name, id, email, officeNumber)
+    //     console.log(manager)
+
+    // })
+
+    // .then((input) => {
+
+    //     console.log(input)
+    //     // const { name, id, email, officeNumber } = input
+    //     const manager = new Manager(name, id, email, officeNumber)
+    //     console.log(manager)
+    // })
+    // getEmployee(employees[1])
+// }
+// console.log(Employee.getName)
+// const employees = ['manager', 'engineer']
+// getEmployee(employees[0])
+
+// function seeNext(employee) {
+//     // const manager = new Manager(name, id, email, officeNumber)
+//     // console.log(manager)
+
+//     if (employee) {
+//         console.log(employee)
+//         getEmployee(employees[1])
+
+
+//     } else {
+//         return 'Done getting employee info!'
+//     }
+// }
+
+
+    //getEmployee(employees[1])
+

@@ -69,25 +69,25 @@ function inputEmployee(employee) {
                 type: 'input',
                 message: 'What is the ' + employee + ' name?',
                 name: 'name',
-                value: employee,
+                // value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' id?',
                 name: 'id',
-                value: employee,
+                //value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' email?',
                 name: 'email',
-                value: employee,
+                //value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' office number?',
                 name: 'officeNumber',
-                value: employee,
+                //value: employee,
             },
         ])
 
@@ -95,19 +95,20 @@ function inputEmployee(employee) {
 
 
             if (employee === 'Manager') {
+                console.log(employee)
                 console.log(input.value)
-                const manager = new Manager(input.name, input.id, input.email, input.officeNumber, input.value)
+                const manager = new Manager(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(manager)
                 team.push(manager)
                 getEmployee()
 
             } else if (employee === 'Engineer') {
-                const engineer = new Engineer(input.name, input.id, input.email, input.officeNumber)
+                const engineer = new Engineer(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(engineer)
                 team.push(engineer)
                 getEmployee()
             } else if (employee === 'Intern') {
-                const intern = new Intern(input.name, input.id, input.email, input.officeNumber)
+                const intern = new Intern(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(intern)
                 team.push(intern)
                 getEmployee()

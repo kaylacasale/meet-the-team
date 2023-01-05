@@ -2,9 +2,10 @@ const Employee = require("./employee");
 
 // manager 'is a' employee
 class Engineer extends Employee {
-    constructor(name, id, email, officeNumber) {
+    constructor(name, id, email, officeNumber, employee) {
         super(name, id, email);
         this.oNumber = officeNumber;
+        this.employee = employee
     }
 
 

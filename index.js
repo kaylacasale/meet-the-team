@@ -8,6 +8,8 @@ const inquirer = require('inquirer');
 
 const Employee = require('./employee');
 const Manager = require('./manager');
+const Engineer = require('./Engineer');
+const Intern = require('./Intern');
 // const employee = new Employee();
 
 const team = []
@@ -53,6 +55,9 @@ function getEmployee() {
         })
 }
 
+// added more if else statements to get different
+// t values and pass them in template literals in functions
+
 function inputEmployee(employee) {
 
 
@@ -64,33 +69,51 @@ function inputEmployee(employee) {
                 type: 'input',
                 message: 'What is the ' + employee + ' name?',
                 name: 'name',
+                value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' id?',
                 name: 'id',
+                value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' email?',
                 name: 'email',
+                value: employee,
             },
             {
                 type: 'input',
                 message: 'What is the ' + employee + ' office number?',
                 name: 'officeNumber',
+                value: employee,
             },
         ])
 
         .then((input) => {
 
+
             if (employee === 'Manager') {
-                const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
+                console.log(input.value)
+                const manager = new Manager(input.name, input.id, input.email, input.officeNumber, input.value)
                 console.log(manager)
                 team.push(manager)
                 getEmployee()
+
             } else if (employee === 'Engineer') {
-                const engineer = new engineer
+                const engineer = new Engineer(input.name, input.id, input.email, input.officeNumber)
+                console.log(engineer)
+                team.push(engineer)
+                getEmployee()
+            } else if (employee === 'Intern') {
+                const intern = new Intern(input.name, input.id, input.email, input.officeNumber)
+                console.log(intern)
+                team.push(intern)
+                getEmployee()
+
+            } else {
+                seeEmployees()
             }
 
 
@@ -103,10 +126,13 @@ function seeEmployees() {
     // let htmlPageContent = generateHTML(input)
     // console.log(htmlPageContent)
     // htmlPageContent += team
+    console.log(team)
+    let seeTeam = JSON.stringify(team)
 
 
 
-    fs.writeFile('index.html', team, (err) =>
+
+    fs.writeFile('index.html', seeTeam, (err) =>
         err ? console.log(err) : console.log('Successfully created index.html!')
     )
 

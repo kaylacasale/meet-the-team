@@ -1,3 +1,8 @@
+# add node_modules/ and .DS_Store/ so that node_modules directory isn't tracked or uploaded to GitHub
+# node_modules/
+# .DS_Store/
+
+
 # Logs
 logs
 *.log
@@ -80,7 +85,9 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+
+# REMOVE dist from the .gitignore file so that Git will track this folder and include it when you push up to repository
+# dist
 
 # Gatsby files
 .cache/

@@ -1,0 +1,23 @@
+{
+  "name": "meet-the-team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaylacasale/meet-the-team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaylacasale/meet-the-team/issues"
+  },
+  "homepage": "https://github.com/kaylacasale/meet-the-team#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}

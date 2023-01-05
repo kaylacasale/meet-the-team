@@ -129,11 +129,33 @@ function seeEmployees() {
     // htmlPageContent += team
     console.log(team)
     let seeTeam = JSON.stringify(team)
+    console.log(team[0])
+    console.log(team[0].name, 'name!!!')
+    //* since Manager input will always come first, manager values equal to first object (constructor) in the array
+    //* add content to index file on an on going basis
+    let contentHTML;
+
+    let managerName = team[0].name
+    contentHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+    <div>` + managerName + `</div>`
+
+
+    //* define more values in team object and extract to put in HTML content variable
 
 
 
 
-    fs.writeFile('index.html', seeTeam, (err) =>
+
+    fs.writeFile('index.html', contentHTML, (err) =>
         err ? console.log(err) : console.log('Successfully created index.html!')
     )
 

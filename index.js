@@ -182,7 +182,10 @@ function seeEmployees() {
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
-      <h1>Hello, world!</h1>`
+      <h1>Meet The Team</h1>
+      <div class="container">
+        <div class="row">`
+
 
     // let employeeName = team[0].name
     //let employeeType = team[0].employee
@@ -193,7 +196,7 @@ function seeEmployees() {
 
         contentHTML += `
 
-      <div class="card" style="width: 18rem;">
+      <div class="card col-12 col-md-3 col-lg-2 shadow-xl p-3 mx-2" style="width: 18rem;">
         <img class="card-img-top" src="..." alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">` + employeeName + `</h5>
@@ -209,6 +212,7 @@ function seeEmployees() {
             <a href="#" class="card-link">Another link</a>
         </div>
         </div>
+    
 
 `
     }
@@ -217,6 +221,8 @@ function seeEmployees() {
 
 
     contentHTML += `
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
   </html>`

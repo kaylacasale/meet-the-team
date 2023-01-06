@@ -1,9 +1,12 @@
 class Employee {
-    constructor(name, id, email) {
+    constructor(name, id, email, employee) {
         this.name = name;
         this.id = id;
         this.email = email;
+        // this.employee = employee
+        // console.log(employee, 'from Employee constructor')
     }
+
 
     getName() {
         return this.name;
@@ -15,6 +18,10 @@ class Employee {
 
     getEmail() {
         return this.email
+    }
+
+    getRole(employee) {
+        console.log(employee, 'from constructor')
     }
 }
 

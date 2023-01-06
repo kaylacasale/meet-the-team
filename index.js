@@ -13,17 +13,18 @@ const Intern = require('./Intern');
 // const employee = new Employee();
 
 const team = []
-const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
-    `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-    <div></div>`
+const allManagers = []
+// const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
+//     `<!DOCTYPE html>
+//     <html lang="en">
+//     <head>
+//         <meta charset="UTF-8">
+//         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//         <title>Document</title>
+//     </head>
+//     <body>
+//     <div></div>`
 function getEmployee() {
     inquirer
         .prompt([
@@ -37,7 +38,6 @@ function getEmployee() {
         .then((answer) => {
             if (answer.employeeType === 'Manager') {
                 let employeeType = answer.employeeType
-
                 inputEmployee(employeeType)
 
             } else if (answer.employeeType === 'Engineer') {
@@ -55,8 +55,8 @@ function getEmployee() {
         })
 }
 
-// added more if else statements to get different
-// t values and pass them in template literals in functions
+//* added more if else statements to get different
+//*  values and pass them in template literals in functions
 
 function inputEmployee(employee) {
 
@@ -99,14 +99,28 @@ function inputEmployee(employee) {
                 console.log(input.value)
                 const manager = new Manager(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(manager)
+                //* in order to get the Name of the employee from the class's function getName()
+
                 team.push(manager)
                 getEmployee()
+
+                //*isolate managers and push into its own managers array
+                allManagers.push(manager)
+                getManager(manager)
+
+
+
+
+                //console.log(manager.getName())
+                // let name = manager.getName()
 
             } else if (employee === 'Engineer') {
                 const engineer = new Engineer(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(engineer)
                 team.push(engineer)
                 getEmployee()
+
+                //  console.log(Employee.getName())
             } else if (employee === 'Intern') {
                 const intern = new Intern(input.name, input.id, input.email, input.officeNumber, employee)
                 console.log(intern)
@@ -123,30 +137,78 @@ function inputEmployee(employee) {
 
 }
 
+
+function getManager(manager) {
+    //console.log(manager)
+    console.log('\t' + 'ADDED Manager: ' + manager.name)
+    // console.log(manager.name)
+    // console.log(allManagers, 'all managers')
+    // console.log(allManagers[0].name)
+
+}
 function seeEmployees() {
     // let htmlPageContent = generateHTML(input)
     // console.log(htmlPageContent)
     // htmlPageContent += team
-    console.log(team)
-    let seeTeam = JSON.stringify(team)
+    //console.log(team.manager.getInfo)
+    // console.log(team)
+    // let { Manager } = team
+    // console.log(Manager)
+    //console.log(team.Manager, 'team.Manager')
+    // let managers = team.Manager(name, id, email, eNumber)
+    // console.log(managers.id)
+
+    // let managers = team.Manager
+    // let seeManagers = JSON.stringify(managers)
+    // console.log(seeManagers, 'this is stringified')
+
+
+    // let seeTeam = JSON.stringify(team)
+    // console.log(seeTeam)
+    // const { name } = seeTeam
+    // console.log(name)
+    //* add first Employee (always the Manager as engineered in code)
     console.log(team[0])
     console.log(team[0].name, 'name!!!')
     //* since Manager input will always come first, manager values equal to first object (constructor) in the array
     //* add content to index file on an on going basis
     let contentHTML;
 
-    let managerName = team[0].name
+    let employeeName = team[0].name
+    let employeeType = team[0].employee
     contentHTML = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Bootstrap demo</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
-    <div>` + managerName + `</div>`
+      <h1>Hello, world!</h1>
+
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">` + employeeName + `</h5>
+            <p class="card-text">` + employeeType + `</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+        </div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+  </html>`
 
 
     //* define more values in team object and extract to put in HTML content variable

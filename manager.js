@@ -13,6 +13,7 @@ class Manager extends Employee {
     }
 
 
+
     // fake use case
 }
 // const manager1 = 'manager'

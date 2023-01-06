@@ -85,8 +85,24 @@ function inputEmployee(employee) {
             },
             {
                 type: 'input',
-                message: 'What is the ' + employee + ' office number?',
-                name: 'officeNumber',
+                message: function () {
+                    if (employee === 'Manager') {
+                        return 'What is the ' + employee + ' office number?'
+                    } else if (employee === 'Engineer') {
+                        return 'What is the ' + employee + ' gitHub?'
+                    } else if (employee === 'Intern') {
+                        return 'What is the ' + employee + ' school?'
+                    }
+                },
+                name: function () {
+                    if (employee === 'Manager') {
+                        return 'officeNumber'
+                    } else if (employee === 'Engineer') {
+                        return 'github'
+                    } else if (employee === 'Intern') {
+                        return 'school'
+                    }
+                }
                 //value: employee,
             },
         ])
@@ -97,7 +113,8 @@ function inputEmployee(employee) {
             if (employee === 'Manager') {
                 console.log(employee)
                 console.log(input.value)
-                const manager = new Manager(input.name, input.id, input.email, input.officeNumber, employee)
+                console.log(input.officeNumber)
+                const manager = new Manager(input.name, input.id, input.email, input.name, employee)
                 console.log(manager)
                 //* in order to get the Name of the employee from the class's function getName()
 
@@ -115,14 +132,14 @@ function inputEmployee(employee) {
                 // let name = manager.getName()
 
             } else if (employee === 'Engineer') {
-                const engineer = new Engineer(input.name, input.id, input.email, input.officeNumber, employee)
+                const engineer = new Engineer(input.name, input.id, input.email, input.name, employee)
                 console.log(engineer)
                 team.push(engineer)
                 getEmployee()
 
                 //  console.log(Employee.getName())
             } else if (employee === 'Intern') {
-                const intern = new Intern(input.name, input.id, input.email, input.officeNumber, employee)
+                const intern = new Intern(input.name, input.id, input.email, input.school, employee)
                 console.log(intern)
                 team.push(intern)
                 getEmployee()

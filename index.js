@@ -172,11 +172,7 @@ function seeEmployees() {
     console.log(team[0].name, 'name!!!')
     //* since Manager input will always come first, manager values equal to first object (constructor) in the array
     //* add content to index file on an on going basis
-    let contentHTML;
-
-    let employeeName = team[0].name
-    let employeeType = team[0].employee
-    contentHTML = `
+    let contentHTML = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -186,7 +182,16 @@ function seeEmployees() {
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     </head>
     <body>
-      <h1>Hello, world!</h1>
+      <h1>Hello, world!</h1>`
+
+    // let employeeName = team[0].name
+    //let employeeType = team[0].employee
+
+    for (var i = 0; i < team.length; i++) {
+        let employeeName = team[i].name
+        let employeeType = team[i].employee
+
+        contentHTML += `
 
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="..." alt="Card image cap">
@@ -205,16 +210,16 @@ function seeEmployees() {
         </div>
         </div>
 
-
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </body>
-  </html>`
-
+`
+    }
 
     //* define more values in team object and extract to put in HTML content variable
 
 
-
+    contentHTML += `
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    </body>
+  </html>`
 
 
     fs.writeFile('index.html', contentHTML, (err) =>

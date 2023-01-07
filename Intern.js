@@ -8,6 +8,14 @@ class Intern extends Employee {
         this.employee = employee
     }
 
+    getSchool() {
+        return this.school
+    }
+
+    getRole() {
+        return this.employee
+    }
+
 
     // fake use case
 }

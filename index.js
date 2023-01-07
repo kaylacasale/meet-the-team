@@ -14,6 +14,7 @@ const Intern = require('./Intern');
 
 const team = []
 const allManagers = []
+//const gitHubURLs = []
 // const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
 //     `<!DOCTYPE html>
 //     <html lang="en">
@@ -59,13 +60,9 @@ function getEmployee() {
 //*  values and pass them in template literals in functions
 
 function inputEmployee(employee) {
-
-
     inquirer
-
         .prompt([
             {
-
                 type: 'input',
                 message: 'What is the ' + employee + ' name?',
                 name: 'name',
@@ -94,7 +91,8 @@ function inputEmployee(employee) {
                         return 'What is the ' + employee + ' school?'
                     }
                 },
-                name: function () {
+                name: 'some',
+                some: function () {
                     if (employee === 'Manager') {
                         return 'officeNumber'
                     } else if (employee === 'Engineer') {
@@ -110,12 +108,25 @@ function inputEmployee(employee) {
         .then((input) => {
 
 
+
             if (employee === 'Manager') {
+                const { name, id, email, some } = input;
+                const manager = new Manager(name, id, email, some, employee);
+                console.log(manager)
+                console.log(manager.getName(), 'in index')
+                manager['some'] = manager.getName()
+                console.log(manager)
+
+
+                // console.log(link, 'in index.js')
+
+
+
                 console.log(employee)
                 console.log(input.value)
                 console.log(input.officeNumber)
-                const manager = new Manager(input.name, input.id, input.email, input.name, employee)
-                console.log(manager)
+                // const manager = new Manager(input.name, input.id, input.email, input.some, employee)
+                // console.log(manager)
                 //* in order to get the Name of the employee from the class's function getName()
 
                 team.push(manager)
@@ -123,7 +134,7 @@ function inputEmployee(employee) {
 
                 //*isolate managers and push into its own managers array
                 allManagers.push(manager)
-                getManager(manager)
+                displayAddedEmployee(manager)
 
 
 
@@ -132,20 +143,61 @@ function inputEmployee(employee) {
                 // let name = manager.getName()
 
             } else if (employee === 'Engineer') {
-                const engineer = new Engineer(input.name, input.id, input.email, input.name, employee)
+                const { name, id, email, some } = input;
+                const engineer = new Engineer(name, id, email, some, employee);
                 console.log(engineer)
+                console.log(engineer.getGitHub(), 'in index')
+
+                // var requestAPI = `https://api.github.com/users/${engineer.getGitHub()}`
+
+                // fetch(requestAPI)
+                //     .then(function (response) {
+                //         console.log('Successfull fetch of gitHub URL!')
+                //         return response.json()
+                //     })
+                //     .then(function (data) {
+                //         //console.log(data)
+                //         const githubURL = data.html_url
+                //         console.log(githubURL, 'in index')
+
+                //         return githubURL
+                //     })
+
+
+                console.log(engineer)
+
+
+
+                // engineer['some'] = engineer.getGitHub()
+                // console.log(engineer)
+                // console.log(engineer.getGitHub(), 'in index')
+
+                // const engineer = new Engineer(input.name, input.id, input.email, input.some, employee)
+                // console.log(engineer)
                 team.push(engineer)
                 getEmployee()
+                displayAddedEmployee(engineer)
+
+                // console.log(engineer.getGitHub(), 'this is myyy')
+                // const gitHubURL = engineer.getGitHub()
+                // gitHubURLs.push(gitHubURL)
+                //* I input git into the console and in the command 
+
+
 
                 //  console.log(Employee.getName())
             } else if (employee === 'Intern') {
-                const intern = new Intern(input.name, input.id, input.email, input.school, employee)
+                const { name, id, email, some } = input;
+                const intern = new Intern(name, id, email, some, employee);
+                // const intern = new Intern(input.name, input.id, input.email, input.some, employee)
                 console.log(intern)
                 team.push(intern)
                 getEmployee()
+                displayAddedEmployee(intern)
 
             } else {
                 seeEmployees()
+                return team
             }
 
 
@@ -155,15 +207,21 @@ function inputEmployee(employee) {
 }
 
 
-function getManager(manager) {
+function displayAddedEmployee(employee) {
     //console.log(manager)
-    console.log('\t' + 'ADDED Manager: ' + manager.name)
+    console.log('\t' + 'ADDED ' + employee.getRole() + ': ' + employee.getName())
     // console.log(manager.name)
     // console.log(allManagers, 'all managers')
     // console.log(allManagers[0].name)
 
 }
+
 function seeEmployees() {
+    // console.log(Engineer.getGitHub(), 'hi')
+
+
+
+    //console.log(Engineer.getGitHub(), 'Successfully retrieved GitHub URL!')
     // let htmlPageContent = generateHTML(input)
     // console.log(htmlPageContent)
     // htmlPageContent += team
@@ -187,6 +245,9 @@ function seeEmployees() {
     //* add first Employee (always the Manager as engineered in code)
     console.log(team[0])
     console.log(team[0].name, 'name!!!')
+    //console.log(gitHubURLs, 'in seeEmployee function')
+
+
     //* since Manager input will always come first, manager values equal to first object (constructor) in the array
     //* add content to index file on an on going basis
     let contentHTML = `
@@ -205,11 +266,13 @@ function seeEmployees() {
 
 
     // let employeeName = team[0].name
-    //let employeeType = team[0].employee
+    //let employeeType = team[0].employe
 
     for (var i = 0; i < team.length; i++) {
-        let employeeName = team[i].name
-        let employeeType = team[i].employee
+        let employeeName = team[i].getName()
+        let employeeType = team[i].getRole()
+        let employeeId = team[i].getId()
+        let employeEmail = team[i].getEmail()
 
         contentHTML += `
 
@@ -220,8 +283,8 @@ function seeEmployees() {
             <p class="card-text">` + employeeType + `</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">${employeeId}</li>
+            <li class="list-group-item"><a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
             <li class="list-group-item">Vestibulum at eros</li>
         </ul>
         <div class="card-body">

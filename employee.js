@@ -3,6 +3,7 @@ class Employee {
         this.name = name;
         this.id = id;
         this.email = email;
+        this.employee = employee;
         // this.employee = employee
         // console.log(employee, 'from Employee constructor')
     }
@@ -20,8 +21,8 @@ class Employee {
         return this.email
     }
 
-    getRole(employee) {
-        console.log(employee, 'from constructor')
+    getRole() {
+        return this.employee
     }
 }
 

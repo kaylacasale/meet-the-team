@@ -11,6 +11,9 @@ class Manager extends Employee {
         this.oNumber = officeNumber;
         this.employee = employee
     }
+    getRole() {
+        return this.employee
+    }
 
 
 

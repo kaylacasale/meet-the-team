@@ -56,6 +56,7 @@ function getEmployee() {
         })
 }
 
+
 //* added more if else statements to get different
 //*  values and pass them in template literals in functions
 
@@ -148,6 +149,7 @@ function inputEmployee(employee) {
                 console.log(engineer)
                 console.log(engineer.getGitHub(), 'in index')
 
+
                 // var requestAPI = `https://api.github.com/users/${engineer.getGitHub()}`
 
                 // fetch(requestAPI)
@@ -216,11 +218,15 @@ function displayAddedEmployee(employee) {
 
 }
 
+git = []
+
 function seeEmployees() {
+    // console.log(gitLink)
     // console.log(Engineer.getGitHub(), 'hi')
 
 
 
+    //console.log(githubURL)
     //console.log(Engineer.getGitHub(), 'Successfully retrieved GitHub URL!')
     // let htmlPageContent = generateHTML(input)
     // console.log(htmlPageContent)
@@ -274,6 +280,28 @@ function seeEmployees() {
         let employeeId = team[i].getId()
         let employeEmail = team[i].getEmail()
 
+        function getSome() {
+
+            if (team[i].getRole() === 'Manager') {
+                let officeNumber = team[i].getOfficeNumber()
+                return `Office Number: ${officeNumber}`
+            } else if (team[i].getRole() === 'Engineer') {
+                let gitHub = team[i].getGitHub()
+                console.log(gitHub, 'in getSome()')
+                return `GitHub: https://github.com/${gitHub}`
+
+
+
+
+            } else if (team[i].getRole() === 'Intern') {
+                let school = team[i].getSchool()
+                return `School: ${school}`
+
+            }
+        }
+
+
+
         contentHTML += `
 
       <div class="card col-12 col-md-3 col-lg-2 shadow-xl p-3 mx-2" style="width: 18rem;">
@@ -283,19 +311,17 @@ function seeEmployees() {
             <p class="card-text">` + employeeType + `</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">${employeeId}</li>
-            <li class="list-group-item"><a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">ID: ${employeeId}</li>
+            <li class="list-group-item">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
+            <li class="list-group-item">${getSome()}</li>
         </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-        </div>
-    
-
-`
+                    <div class="card-body">
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+        </div>`
     }
+
 
     //* define more values in team object and extract to put in HTML content variable
 
@@ -303,9 +329,9 @@ function seeEmployees() {
     contentHTML += `
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
-  </html>`
+  </html> `
 
 
     fs.writeFile('index.html', contentHTML, (err) =>
@@ -348,7 +374,7 @@ init()
 
 //     let htmlPageContent = generateHTML(input)
 //     console.log(htmlPageContent)
-//     htmlPageContent += `<h> ${input.name} </h>`
+//     htmlPageContent += `< h > ${ input.name } </h > `
 
 
 

@@ -284,22 +284,31 @@ function seeEmployees() {
 
             if (team[i].getRole() === 'Manager') {
                 let officeNumber = team[i].getOfficeNumber()
-                return `Office Number: ${officeNumber}`
+                return `${officeNumber}`
             } else if (team[i].getRole() === 'Engineer') {
                 let gitHub = team[i].getGitHub()
                 console.log(gitHub, 'in getSome()')
-                return `GitHub: https://github.com/${gitHub}`
-
-
-
-
+                return `https://github.com/${gitHub}`
             } else if (team[i].getRole() === 'Intern') {
                 let school = team[i].getSchool()
-                return `School: ${school}`
+                return `${school}`
 
             }
         }
 
+        function getSomeName() {
+            if (team[i].getRole() === 'Manager') {
+                let propertyeName = 'Office Number: '
+                return propertyeName
+            } else if (team[i].getRole() === 'Engineer') {
+                let propertyeName = 'GitHub: '
+                return propertyeName
+            } else {
+                let propertyeName = 'School: '
+                return propertyeName
+
+            }
+        }
 
 
         contentHTML += `
@@ -313,7 +322,7 @@ function seeEmployees() {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${employeeId}</li>
             <li class="list-group-item">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
-            <li class="list-group-item">${getSome()}</li>
+            <li class="list-group-item">${getSomeName()} <a href="${getSome()}">${getSome()}</a></li>
         </ul>
                     <div class="card-body">
                         <a href="#" class="card-link">Card link</a>

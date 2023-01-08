@@ -264,9 +264,17 @@ function seeEmployees() {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>Bootstrap demo</title>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <link rel="stylesheet" href="style.css" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
-    <body>
+    <body style="background-color:aquamarine;">
+        <nav class="navbar navbar-light bg-light shadow-lg mb-5 p-3">
+            <a class="navbar-brand" href="#">
+            <i class="material-icons d-inline-block align-top" >accessibility</i>
+            <img >
+            Meet The Team
+            </a>
+        </nav>
       <h1>Meet The Team</h1>
       <div class="container">
         <div class="row">`
@@ -329,7 +337,7 @@ function seeEmployees() {
 
         contentHTML += `
 
-      <div class="card col-12 col-md-3 col-lg-2 shadow-xl p-3 mx-2" style="width: 18rem;">
+      <div class="card col-12 col-md-3 col-lg-2 shadow-xl p-3 mx-2" id="card" style="width: 18rem;">
         <i class="material-icons" style="font-size:48px;">${getIcon()}</i>
         <div class="card-body">
             <h5 class="card-title">` + employeeName + `</h5>
@@ -359,9 +367,12 @@ function seeEmployees() {
   </html> `
 
 
+
     fs.writeFile('index.html', contentHTML, (err) =>
         err ? console.log(err) : console.log('Successfully created index.html!')
     )
+
+
 
 }
 

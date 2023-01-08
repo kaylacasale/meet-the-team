@@ -275,7 +275,7 @@ function seeEmployees() {
             Meet The Team
             </a>
         </nav>
-      <h1>Meet The Team</h1>
+      <h1 class="mb-5 p-3">My Team</h1>
       <div class="container">
         <div class="row">`
 
@@ -334,6 +334,20 @@ function seeEmployees() {
             }
         }
 
+        function getRoleDescription() {
+            if (team[i].getRole() === 'Manager') {
+                let link = "https://www.westminster.ac.uk/sites/default/public-files/general-documents/The-Role-of-the-Manager.pdf"
+                return link
+            } else if (team[i].getRole() === 'Engineer') {
+                let link = "https://cm.fiu.edu/wp-content/uploads/2018/07/JD_Site_Field-Engineer_EN.pdf"
+                return link
+            } else {
+                let link = "https://careerservices.wvu.edu/files/d/c50fed4c-5c9c-42b1-8b30-233703b86cef/internship-job-descriptions.pdf"
+                return link
+
+            }
+        }
+
 
         contentHTML += `
 
@@ -346,11 +360,10 @@ function seeEmployees() {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">ID: ${employeeId}</li>
             <li class="list-group-item">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
-            <li class="list-group-item">${getSomeName()} ${getSome()}</li>
+            <li class="list-group-item">${getSomeName()} ${getSome()} </li>
         </ul>
                     <div class="card-body">
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <a href="#${getRoleDescription()}" class="card-link">${employeeType} Roles & Responsibilities</a>
                     </div>
         </div>`
     }

@@ -106,7 +106,7 @@ function inputEmployee(employee) {
 
 
             if (employee === 'Manager') {
-                //* deconstructed object input values passed into object var name 'input' to further call in new constructor function
+                //* deconstructed object input values passed into object var name 'input' to further call in new constructor 
                 const { name, id, email, some } = input;
                 const manager = new Manager(name, id, email, some, employee);
                 console.log(manager)
@@ -122,7 +122,7 @@ function inputEmployee(employee) {
                 team.push(manager)
                 getEmployee()
 
-                //*isolate managers and push into its own managers array
+                //*isolate managers and push into its own managers array (not relevant to existing app functions)
                 allManagers.push(manager)
                 //* pass constructor object into function in order to display employee type and name right after inputing all values for that specific role
                 displayAddedEmployee(manager)

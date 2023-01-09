@@ -36,7 +36,7 @@ Enter `npm run test` or `npm test` in the command-line to run Jest unit tests on
 This application includes and tests Employee (parent Class), Manager, Engineer, and Intern classes that should ALL pass. 
 
 ## Focus Points
-This project demonstrates the use of Object Oriented Programming (OOP) and Test Driven Development. In order to best utilize the DRY code in my development, I focused on creating series of for loops and conditional statements that run the same basic prompts to inquire user input and generate the HTML file with template literals based on varied user input.
+This project demonstrates the use of Object Oriented Programming (OOP) and Test Driven Development. In order to best utilize the DRY code in my development, I focused on creating series of for loops and conditional statements that run the same basic prompts to inquire user input and generate the HTML file with template literals based on various employee role types.
 
 ## Demo
 The following is a walkthrough video that demonstrates the functionality of the tests and Team Profile Generator application. 

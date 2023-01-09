@@ -52,8 +52,8 @@ function getEmployee() {
 
 
 //* added more if else statements to get different values and pass them in template literals in functions
-//* first value passed into this function upon initialization is 'Manager' to generate prompts for Manager role first (upon opening application)
-//* prompt includes conditionals to display different messages and retrieve input for changing properties based on specific position (e.g. office number for manager, github for engineer, school for intern)
+//* first value passed into this function upon initialization is 'Manager' to generate prompts for Manager role first (upon invoking application)
+//* prompt includes conditionals to display different messages and retrieve input for changing properties based on specific position (e.g. office number for manager, github for engineer, school for intern) with template literals
 
 function inputEmployee(employee) {
     inquirer
@@ -134,7 +134,7 @@ function inputEmployee(employee) {
                 console.log(engineer)
                 // console.log(engineer.getGitHub(), 'in index')
 
-                //* initially wanted to integrate fetch request in order to get gitHub URL instead of just concatenating string to generate link - could do fetch successfully but difficult to integrate link values from fetch into index given one prompt with different conditionals to pass through into index variables
+                //* initially wanted to integrate fetch request in order to get gitHub URL (to eventually access and display more information associated with user) instead of just concatenating string to generate link - could do fetch successfully but difficult to integrate link values from fetch into index given one prompt with different conditionals to pass through into template literals
 
 
                 // var requestAPI = `https://api.github.com/users/${engineer.getGitHub()}`
@@ -152,8 +152,6 @@ function inputEmployee(employee) {
                 //         return githubURL
                 //     })
 
-
-                //console.log(engineer)
 
 
                 team.push(engineer)
@@ -251,6 +249,7 @@ function seeEmployees() {
 
         }
 
+        //* function to get property variable among employee types but using same prompt blueprint code
         function getSome() {
 
             if (team[i].getRole() === 'Manager') {

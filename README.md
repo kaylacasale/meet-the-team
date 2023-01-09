@@ -27,6 +27,10 @@ Enter `npm run test` into the command-line
 
 Enter `node index.js` into the command-line
 
+### After invoking the application and answering the questions about your employee, the application should look like this:
+
+<img width="1512" alt="Screen Shot 2023-01-09 at 1 31 39 AM" src="https://user-images.githubusercontent.com/115776118/211277829-d04e4c0d-ef98-4a28-a947-6466e055018b.png">
+
 
 4) Follow the series of prompts to enter employee information and add as many employees as desired. 
 

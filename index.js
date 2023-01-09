@@ -110,12 +110,12 @@ function inputEmployee(employee) {
                 const { name, id, email, some } = input;
                 const manager = new Manager(name, id, email, some, employee);
                 console.log(manager)
-                console.log(manager.getName(), 'in index')
+                //console.log(manager.getName(), 'in index')
                 manager['some'] = manager.getName()
-                console.log(manager)
-                console.log(employee)
-                console.log(input.value)
-                console.log(input.officeNumber)
+                // console.log(manager)
+                //console.log(employee)
+                //console.log(input.value)
+                //console.log(input.officeNumber)
                 // const manager = new Manager(input.name, input.id, input.email, input.some, employee)
                 // console.log(manager)
 
@@ -132,7 +132,7 @@ function inputEmployee(employee) {
                 const { name, id, email, some } = input;
                 const engineer = new Engineer(name, id, email, some, employee);
                 console.log(engineer)
-                console.log(engineer.getGitHub(), 'in index')
+                // console.log(engineer.getGitHub(), 'in index')
 
                 //* initially wanted to integrate fetch request in order to get gitHub URL instead of just concatenating string to generate link - could do fetch successfully but difficult to integrate link values from fetch into index given one prompt with different conditionals to pass through into index variables
 
@@ -153,7 +153,7 @@ function inputEmployee(employee) {
                 //     })
 
 
-                console.log(engineer)
+                //console.log(engineer)
 
 
                 team.push(engineer)
@@ -196,8 +196,8 @@ git = []
 function seeEmployees() {
 
     //* add first Employee (always the Manager as engineered in code) then more employees based on input using for loop to run through 'team' array that constructor objects are pushed into 
-    console.log(team[0])
-    console.log(team[0].name, 'name!!!')
+    //console.log(team[0])
+    //console.log(team[0].name, 'name!!!')
     //console.log(gitHubURLs, 'in seeEmployee function')
 
 
@@ -258,7 +258,7 @@ function seeEmployees() {
                 return `${officeNumber}`
             } else if (team[i].getRole() === 'Engineer') {
                 let gitHub = team[i].getGitHub()
-                console.log(gitHub, 'in getSome()')
+                //console.log(gitHub, 'in getSome()')
                 return `<a href="https://github.com/${gitHub}">https://github.com/${gitHub}</a>`
             } else if (team[i].getRole() === 'Intern') {
                 let school = team[i].getSchool()
@@ -329,7 +329,7 @@ function seeEmployees() {
 
 
     fs.writeFile('index.html', contentHTML, (err) =>
-        err ? console.log(err) : console.log('Successfully created index.html!')
+        err ? console.log(err) : console.log('Successfully created index.html for your team!')
     )
 
 

@@ -1,4 +1,4 @@
-# Team Profile Generator 
+# Team Profile Generator 👤
 A **browser-based profile generator** that generates an HTML webpage with summaries for each employee based on **user input**.
 
 ### meet-the-team

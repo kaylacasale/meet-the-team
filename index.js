@@ -204,6 +204,7 @@ function seeEmployees() {
     //* since Manager input will always come first, manager values equal to first object (constructor) in the array
     //* add content to index file on an on going basis after user inputs values for each employee type 
     //* directly below shows the intitial index.html content added upon creating file
+    //* linked styling for Bootstrap and google icons (to generate icons associated with each employee type) in generated html file content
     let contentHTML = `
     <!DOCTYPE html>
     <html lang="en">
@@ -223,7 +224,7 @@ function seeEmployees() {
             Meet The Team
             </a>
         </nav>
-      <h1 class="mb-5 p-3">My Team</h1>
+      <h1 class="mb-5 p-3" id="header">My Team</h1>
       <div class="container">
         <div class="row">`
 
@@ -297,16 +298,16 @@ function seeEmployees() {
 
         contentHTML += `
 
-      <div class="card col-12 col-md-3 col-lg-2 shadow-xl p-3 mx-2" id="card" style="width: 18rem;">
+      <div class="card col-12 col-md-3 col-lg-2 shadow-lg p-3 mx-2" id="cards" style="width: 18rem; background-color: rgb(241, 240, 240);">
         <i class="material-icons" style="font-size:48px;">${getIcon()}</i>
         <div class="card-body">
             <h5 class="card-title">` + employeeName + `</h5>
             <p class="card-text">` + employeeType + `</p>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${employeeId}</li>
-            <li class="list-group-item">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
-            <li class="list-group-item">${getSomeName()} ${getSome()} </li>
+        <ul class="list-group list-group-flush" style="background-color: black">
+            <li class="list-group-item" style="background-color: aquamarine;">ID: ${employeeId}</li>
+            <li class="list-group-item" style="background-color: aquamarine;">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
+            <li class="list-group-item" style="background-color: aquamarine;">${getSomeName()} ${getSome()} </li>
         </ul>
                     <div class="card-body">
                         <a href="#${getRoleDescription()}" class="card-link">${employeeType} Roles & Responsibilities</a>

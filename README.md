@@ -7,7 +7,11 @@ You can dynamically build multiple profiles for roles like Managers, Engineers, 
 ## Description
 Maintaining up-to-date employee records can offer great opportunities and keep everyone informed. This dynamic browser-based application allows you to constantly update employee information and share profiles using the HTML link generated after the user enters information. 
 
-This application was created using the **Inquirer** module from **Node.js** and **Jest** in order to run tests. Inquirer is an **NPM** package that provides an easy way to capture user input in Node.js command line interface applications like this. It provides several methods for asking questions and returning answers from the user that can then be accessed by a `.then` promise function. Therefore, this application will require you to have NPM and Node.js installed to run methods such as `require` associated with the `inquirer` package to execute the code. After entering all employee information, a newly created HTML file will contain your user input. Each time you run this application using `node index.js` in the command-line, content from the prior HTML generated will be completely erased and new information will be displayed. You can save the HTML files separately to retain prior information from each generated file.
+This application was created using the **Inquirer** module from **Node.js** and **Jest** in order to run tests. Inquirer is an **NPM** package that provides an easy way to capture user input in Node.js command line interface applications like this. It provides several methods for asking questions and returning answers from the user that can then be accessed by a `.then` promise function. Therefore, this application will require you to have NPM and Node.js installed to run methods such as `require` associated with the `inquirer` package to execute the code. 
+
+In creating this application, I removed `dist` from the .gitignore file so that Git will track this folder and include it during commits to this repository. 
+
+After entering all employee information, a newly created HTML file will contain your user input. Each time you run this application using `node index.js` in the command-line, content from the prior HTML generated will be completely erased and new information will be displayed. You can save the HTML files separately to retain prior information from each generated file.
 
 ## Installation
 1) Within this repository, select the green `<> Code` button to copy the GitHub URL associated with this project.
@@ -28,6 +32,8 @@ Enter `node index.js` into the command-line
 
 ## Tests
 Enter `npm run test` or `npm test` in the command-line to run Jest unit tests on Contructor functions. 
+
+This application includes and tests Employee (parent Class), Manager, Engineer, and Intern classes that should ALL pass. 
 
 ## Focus Points
 This project demonstrates the use of Object Oriented Programming (OOP) and Test Driven Development. In order to best utilize the DRY code in my code, I focused on creating series of for loops and conditional statements that run the same prompts to inquire user input and generate the HTML file with template literally based on existing user input.

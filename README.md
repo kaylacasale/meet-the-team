@@ -7,7 +7,7 @@ You can dynamically build multiple profiles for employee roles like **Managers**
 ## Description
 Maintaining up-to-date employee records can offer great opportunities and keep everyone informed. This dynamic browser-based application allows you to constantly update employee information and share profiles using the HTML link generated after the user enters information. 
 
-This application was created using the **Inquirer** module from **Node.js** and **Jest** in order to run tests. Inquirer is an **NPM** package that provides an easy way to capture user input in Node.js command line interface applications like this. It provides several methods for asking questions and returning answers from the user that can then be accessed by a `.then` promise function. Therefore, this application will require you to have NPM and Node.js installed to run methods such as `require` associated with the `inquirer` package to execute the code. 
+This application was created using the **Inquirer package** from **Node.js** and the **Jest package** for a suite of unit tests. Inquirer is an **NPM** package that provides an easy way to capture user input in Node.js command line interface applications like this. It provides several methods for asking questions and returning answers from the user that can then be accessed by a `.then` promise function. Therefore, this application will require you to have NPM and Node.js installed to run methods such as `require` associated with the `inquirer` package to execute the code. 
 
 In creating this application, I removed `dist` from the .gitignore file so that Git will track this folder and include it during commits to this repository. 
 

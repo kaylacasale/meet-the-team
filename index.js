@@ -298,7 +298,7 @@ function seeEmployees() {
 
         contentHTML += `
 
-      <div class="card col-12 col-md-3 col-lg-2 shadow-lg p-3 mx-2" id="cards" style="width: 18rem; background-color: rgb(241, 240, 240);">
+      <div class="card col-12 col-md-3 col-lg-2 shadow-lg p-3 mx-2 my-2" id="cards" style="width: 18rem; background-color: rgb(241, 240, 240);">
         <i class="material-icons" style="font-size:48px;">${getIcon()}</i>
         <div class="card-body">
             <h5 class="card-title">` + employeeName + `</h5>
@@ -310,7 +310,7 @@ function seeEmployees() {
             <li class="list-group-item" style="background-color: #D1E1FF;">${getSomeName()} ${getSome()} </li>
         </ul>
                     <div class="card-body">
-                        <a href="#${getRoleDescription()}" class="card-link">${employeeType} Roles & Responsibilities</a>
+                        <a href="${getRoleDescription()}" class="card-link">${employeeType} Roles & Responsibilities</a>
                     </div>
         </div>`
     }

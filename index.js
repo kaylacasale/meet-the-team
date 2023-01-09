@@ -216,7 +216,7 @@ function seeEmployees() {
       <link rel="stylesheet" href="style.css" />
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
-    <body style="background-color:aquamarine;">
+    <body style="background-color:#3476EF;">
         <nav class="navbar navbar-light bg-light shadow-lg mb-5 p-3">
             <a class="navbar-brand" href="#">
             <i class="material-icons d-inline-block align-top" >accessibility</i>
@@ -302,12 +302,12 @@ function seeEmployees() {
         <i class="material-icons" style="font-size:48px;">${getIcon()}</i>
         <div class="card-body">
             <h5 class="card-title">` + employeeName + `</h5>
-            <p class="card-text">` + employeeType + `</p>
+            <p class="card-text" style="color: #3476EF;">` + employeeType + `</p>
         </div>
-        <ul class="list-group list-group-flush shadow" style="background-color: black">
-            <li class="list-group-item" style="background-color: aquamarine;">ID: ${employeeId}</li>
-            <li class="list-group-item" style="background-color: aquamarine;">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
-            <li class="list-group-item" style="background-color: aquamarine;">${getSomeName()} ${getSome()} </li>
+        <ul class="list-group list-group-flush shadow" style="background-color: #3476EF; border-width: thick;">
+            <li class="list-group-item" style="background-color: #D1E1FF;">ID: ${employeeId}</li>
+            <li class="list-group-item" style="background-color: #D1E1FF;">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
+            <li class="list-group-item" style="background-color: #D1E1FF;">${getSomeName()} ${getSome()} </li>
         </ul>
                     <div class="card-body">
                         <a href="#${getRoleDescription()}" class="card-link">${employeeType} Roles & Responsibilities</a>

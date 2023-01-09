@@ -1,5 +1,5 @@
 # Team Profile Generator 
-A browser-based profile generator that generates an HTML webpage with summaries for each employee based on user input.
+A **browser-based profile generator** that generates an HTML webpage with summaries for each employee based on **user input**.
 
 ### meet-the-team
 You can dynamically build multiple profiles for roles like Managers, Engineers, and Interns in seconds. 

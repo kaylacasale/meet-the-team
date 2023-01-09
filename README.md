@@ -2,7 +2,7 @@
 A **browser-based profile generator** that generates an HTML webpage with summaries for each employee based on **user input**.
 
 ### meet-the-team
-You can dynamically build multiple profiles for roles like Managers, Engineers, and Interns in seconds. 
+You can dynamically build multiple profiles for employee roles like **Managers**, **Engineers**, and **Interns** in seconds. 
 
 ## Description
 Maintaining up-to-date employee records can offer great opportunities and keep everyone informed. This dynamic browser-based application allows you to constantly update employee information and share profiles using the HTML link generated after the user enters information. 

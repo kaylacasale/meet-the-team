@@ -304,7 +304,7 @@ function seeEmployees() {
             <h5 class="card-title">` + employeeName + `</h5>
             <p class="card-text">` + employeeType + `</p>
         </div>
-        <ul class="list-group list-group-flush" style="background-color: black">
+        <ul class="list-group list-group-flush shadow" style="background-color: black">
             <li class="list-group-item" style="background-color: aquamarine;">ID: ${employeeId}</li>
             <li class="list-group-item" style="background-color: aquamarine;">Email: <a href="mailto:${employeEmail}subject=subject text">${employeEmail}</li>
             <li class="list-group-item" style="background-color: aquamarine;">${getSomeName()} ${getSome()} </li>

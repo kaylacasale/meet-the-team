@@ -6,10 +6,6 @@
     color: black;
 }
 
-.row {
-    box-shadow: 5px;
-}
-
-.container {
-    box-shadow: 5px;
+.card-title {
+    font-size: 28px;
 }

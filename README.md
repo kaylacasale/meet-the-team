@@ -1,1 +1,27 @@
-# meet-the-team
+# Team Profile Generator
+A browser-based profile generator that generates an HTML webpage with summaries for each employee based on user input.
+
+### meet-the-team
+You can dynamically build multiple profiles for roles like Managers, Engineers, and Interns in seconds. 
+
+## Description
+This application was created using the Inquirer module from Node.js and Jest in order to run tests. Inquirer is an NPM package that provides an easy way to capture user input in Node.js command line interface applications like this. It provides several methods for asking questions and returning answers from the user that can then be accessed by a `.then` promise function. Therefore, this application will require you to have NPM and Node.js installed to run methods such as `require` associated with the `inquirer` package to execute the code. After entering all employee information, a newly created html file will contain your user input. Each time you run this application using `node index.js` in the command-line, content from the prior HTML generated will be completely erased and new information will be displayed. You can save the HTML files separately to retain prior information from each generated file.
+
+## Installation
+1) Within this repository, select the green `<> Code` button to copy the GitHub URL associated with this project.
+2) Navigate to a file or directory you would like to clone the repository from GitHub using the command-line.
+3) Use `git clone <URL>` to clones this application's code locally
+
+> To run tests
+Enter `npm run test` into the command-line
+
+> To run (or invoke) the application
+Enter `node index.js` into the command-line
+
+4) Follow the series of prompts to enter employee information and add as many employees as desired. 
+
+## Tests
+Enter `npm run test` or `npm test` in the command-line to run Jest unit tests on Contructor functions. 
+
+## Focus Points
+This project demonstrates the use of Object Oriented Programming (OOP) and Test Driven Development. In order to best utilize the DRY code in my code, I focused on creating series of for loops and conditional statements that run the same prompts to inquire user input and generate the HTML file with template literally based on existing user input.

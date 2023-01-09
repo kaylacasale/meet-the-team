@@ -1,8 +1,11 @@
 //* entered 'npm init -y' in command-line to install necessary package
 //* entered 'npm i inquirer@8.2.4' in order to install the necessary package (inquirer) -> will create a node_modules folder with all necessary code to run inquirer, and list inquirer in dependencies in package.json, and create package.lock for dependencies to function
 
+//* entered 'npm install --save-dev jest' to install jest package in saveDev... object in package.json instead of jest object
+//* changed default value in "test" object in package.json to "jest" in order to connect tests upon running "npm run test" in command line
+
 //* in order to use these packages, need to require them in code and set equal to variable
-//* fs will allow us to create the file I want to generate 
+//* fs will allow us to create the index.html file I want to generate 
 const fs = require('fs');
 const inquirer = require('inquirer');
 
@@ -14,18 +17,9 @@ const Intern = require('./lib/Intern');
 
 const team = []
 const allManagers = []
-//const gitHubURLs = []
-// const generateHTML = (input) = ({ name, id, email, officeNumber }) =>
-//     `<!DOCTYPE html>
-//     <html lang="en">
-//     <head>
-//         <meta charset="UTF-8">
-//         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-//         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-//         <title>Document</title>
-//     </head>
-//     <body>
-//     <div></div>`
+
+//* prompt to find which type of Employee will request user input for
+
 function getEmployee() {
     inquirer
         .prompt([
@@ -57,8 +51,9 @@ function getEmployee() {
 }
 
 
-//* added more if else statements to get different
-//*  values and pass them in template literals in functions
+//* added more if else statements to get different values and pass them in template literals in functions
+//* first value passed into this function upon initialization is 'Manager' to generate prompts for Manager role first (upon opening application)
+//* prompt includes conditionals to display different messages and retrieve input for changing properties based on specific position (e.g. office number for manager, github for engineer, school for intern)
 
 function inputEmployee(employee) {
     inquirer
@@ -111,43 +106,35 @@ function inputEmployee(employee) {
 
 
             if (employee === 'Manager') {
+                //* deconstructed object input values passed into object var name 'input' to further call in new constructor function
                 const { name, id, email, some } = input;
                 const manager = new Manager(name, id, email, some, employee);
                 console.log(manager)
                 console.log(manager.getName(), 'in index')
                 manager['some'] = manager.getName()
                 console.log(manager)
-
-
-                // console.log(link, 'in index.js')
-
-
-
                 console.log(employee)
                 console.log(input.value)
                 console.log(input.officeNumber)
                 // const manager = new Manager(input.name, input.id, input.email, input.some, employee)
                 // console.log(manager)
-                //* in order to get the Name of the employee from the class's function getName()
 
                 team.push(manager)
                 getEmployee()
 
                 //*isolate managers and push into its own managers array
                 allManagers.push(manager)
+                //* pass constructor object into function in order to display employee type and name right after inputing all values for that specific role
                 displayAddedEmployee(manager)
 
-
-
-
-                //console.log(manager.getName())
-                // let name = manager.getName()
 
             } else if (employee === 'Engineer') {
                 const { name, id, email, some } = input;
                 const engineer = new Engineer(name, id, email, some, employee);
                 console.log(engineer)
                 console.log(engineer.getGitHub(), 'in index')
+
+                //* initially wanted to integrate fetch request in order to get gitHub URL instead of just concatenating string to generate link - could do fetch successfully but difficult to integrate link values from fetch into index given one prompt with different conditionals to pass through into index variables
 
 
                 // var requestAPI = `https://api.github.com/users/${engineer.getGitHub()}`
@@ -169,25 +156,11 @@ function inputEmployee(employee) {
                 console.log(engineer)
 
 
-
-                // engineer['some'] = engineer.getGitHub()
-                // console.log(engineer)
-                // console.log(engineer.getGitHub(), 'in index')
-
-                // const engineer = new Engineer(input.name, input.id, input.email, input.some, employee)
-                // console.log(engineer)
                 team.push(engineer)
                 getEmployee()
                 displayAddedEmployee(engineer)
 
-                // console.log(engineer.getGitHub(), 'this is myyy')
-                // const gitHubURL = engineer.getGitHub()
-                // gitHubURLs.push(gitHubURL)
-                //* I input git into the console and in the command 
 
-
-
-                //  console.log(Employee.getName())
             } else if (employee === 'Intern') {
                 const { name, id, email, some } = input;
                 const intern = new Intern(name, id, email, some, employee);
@@ -221,41 +194,16 @@ function displayAddedEmployee(employee) {
 git = []
 
 function seeEmployees() {
-    // console.log(gitLink)
-    // console.log(Engineer.getGitHub(), 'hi')
 
-
-
-    //console.log(githubURL)
-    //console.log(Engineer.getGitHub(), 'Successfully retrieved GitHub URL!')
-    // let htmlPageContent = generateHTML(input)
-    // console.log(htmlPageContent)
-    // htmlPageContent += team
-    //console.log(team.manager.getInfo)
-    // console.log(team)
-    // let { Manager } = team
-    // console.log(Manager)
-    //console.log(team.Manager, 'team.Manager')
-    // let managers = team.Manager(name, id, email, eNumber)
-    // console.log(managers.id)
-
-    // let managers = team.Manager
-    // let seeManagers = JSON.stringify(managers)
-    // console.log(seeManagers, 'this is stringified')
-
-
-    // let seeTeam = JSON.stringify(team)
-    // console.log(seeTeam)
-    // const { name } = seeTeam
-    // console.log(name)
-    //* add first Employee (always the Manager as engineered in code)
+    //* add first Employee (always the Manager as engineered in code) then more employees based on input using for loop to run through 'team' array that constructor objects are pushed into 
     console.log(team[0])
     console.log(team[0].name, 'name!!!')
     //console.log(gitHubURLs, 'in seeEmployee function')
 
 
     //* since Manager input will always come first, manager values equal to first object (constructor) in the array
-    //* add content to index file on an on going basis
+    //* add content to index file on an on going basis after user inputs values for each employee type 
+    //* directly below shows the intitial index.html content added upon creating file
     let contentHTML = `
     <!DOCTYPE html>
     <html lang="en">
@@ -280,8 +228,6 @@ function seeEmployees() {
         <div class="row">`
 
 
-    // let employeeName = team[0].name
-    //let employeeType = team[0].employe
 
     for (var i = 0; i < team.length; i++) {
         let employeeName = team[i].getName()
@@ -389,92 +335,14 @@ function seeEmployees() {
 
 }
 
-
+//* in order to get input values for manager role upon running the application, pass 'Manager' string into inputEmployee() function
 function init() {
     inputEmployee('Manager')
     //getEmployee('Manager')
 }
 
 init()
-//         .then((input) => {
-//     const manager = new Manager(input.name, input.id, input.email, input.officeNumber)
-//     console.log(input)
-//     //* destructed object input values passed into object var name 'input'
-//     const { name, id, email, officeNumber } = input
-//     const employee = new Employee(name, id, email);
-
-//     seeNext(input)
-//     // const manager = new Manager(name, id, email, officeNumber)
-//     // console.log(manager)
 
 
 
-
-//     // ask if you're done 
-//     // if not
-//     // -- prompt the user again
-//     // if so
-//     // -- take all of the object you've created and use them to gen your html
-
-
-
-//     console.log(employee)
-//     //console.log(Employee.getName())
-
-//     let htmlPageContent = generateHTML(input)
-//     console.log(htmlPageContent)
-//     htmlPageContent += `< h > ${ input.name } </h > `
-
-
-
-//     fs.writeFile('index.html', htmlPageContent, (err) =>
-//         err ? console.log(err) : console.log('Successfully created index.html!')
-//     )
-
-//     // console.log(Employee.getName())
-
-
-
-
-// })
-
-
-
-    // .then((input) => {
-    //     const { name, id, email, officeNumber } = input
-
-    //     const manager = new Manager(name, id, email, officeNumber)
-    //     console.log(manager)
-
-    // })
-
-    // .then((input) => {
-
-    //     console.log(input)
-    //     // const { name, id, email, officeNumber } = input
-    //     const manager = new Manager(name, id, email, officeNumber)
-    //     console.log(manager)
-    // })
-    // getEmployee(employees[1])
-// }
-// console.log(Employee.getName)
-// const employees = ['manager', 'engineer']
-// getEmployee(employees[0])
-
-// function seeNext(employee) {
-//     // const manager = new Manager(name, id, email, officeNumber)
-//     // console.log(manager)
-
-//     if (employee) {
-//         console.log(employee)
-//         getEmployee(employees[1])
-
-
-//     } else {
-//         return 'Done getting employee info!'
-//     }
-// }
-
-
-    //getEmployee(employees[1])
 

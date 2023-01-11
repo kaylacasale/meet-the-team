@@ -18,6 +18,9 @@ After entering all employee information, a newly created HTML file will contain 
 2) Navigate to a file or directory you would like to clone the repository from GitHub using the command-line.
 3) Use `git clone <URL>` to clones this application's code locally
 
+> To install necessary packages:
+
+Enter `npm i` into the command-line
 
 > To run tests: 
 
